@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+    <h1>${perem}</h1>
+    <p th:text="|Тут наш текст: ${perem}|">VALUE</p>
+    <p th:with="lenght=*{perem.length()}" th:utext="'Наш текст из perem содержит '+${lenght}+' значений!'"></p>
+
+
+</body>
+</html>

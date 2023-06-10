@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ID пользователя</title>
+</head>
+<body>
+  <p th:text="'Пользователь с именем: ' + ${id.getFirstName()} + ' и фамилией ' + ${id.getLastName()}"></p>
+</body>
+</html>

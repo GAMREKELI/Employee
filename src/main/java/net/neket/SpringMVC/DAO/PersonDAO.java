@@ -35,4 +35,14 @@ public class PersonDAO {
     public void deletePersone(int id) {
         listpersone.removeIf(p -> p.getID() == id);
     }
+
+    public void update(Persone persone, int id) {
+        listpersone.stream()
+                .filter(p -> p.getID() == id)
+                .forEach(p -> {
+                    p.setFirstName(persone.getFirstName());
+                    p.setLastName(persone.getLastName());
+                    p.setAge(persone.getAge());
+                });
+    }
 }

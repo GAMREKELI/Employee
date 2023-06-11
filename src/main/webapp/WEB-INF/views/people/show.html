@@ -8,7 +8,10 @@
     <div th:each="person : ${people}">
         <p th:text="'Пользователь с именем: ' + ${person.getFirstName()} + ' и фамилией ' + ${person.getLastName()} + ' ID = ' + ${person.getID()}"></p>
         <form th:action="@{/first/{id}(id=${person.getID()})}" th:method="DELETE">
-            <input type="submit" value="Удалить" />
+            <button type="submit" >Удалить</button>
+        </form>
+        <form th:method="GET" th:action="@{/first/{id}/update(id=${person.getID()})}">
+            <button type="submit">Изменить</button>
         </form>
     </div>
     </body>

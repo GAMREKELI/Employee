@@ -43,6 +43,17 @@ public class FirstController {
         personDAO.addPersone(persone);
         return "redirect:/first";
     }
+    @GetMapping("/{id}/update")
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute("person", personDAO.getPersone(id));
+        return "/people/update";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@PathVariable("id") int id, @ModelAttribute("persone") Persone persone) {
+        personDAO.update(persone, id);
+        return "redirect:/first";
+    }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {

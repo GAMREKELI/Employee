@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление</title>
+</head>
+<body>
+  <p th:text="'Проверка пользователя ' + ${person.getFirstName()}"></p>
+  <form th:method="PATCH" th:action="@{/first/{id}(id = person.getID())}"
+</body>
+</html>

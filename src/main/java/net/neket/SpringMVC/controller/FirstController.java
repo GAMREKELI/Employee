@@ -50,7 +50,7 @@ public class FirstController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("persone") Persone persone) {
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") Persone persone) {
         personDAO.update(persone, id);
         return "redirect:/first";
     }

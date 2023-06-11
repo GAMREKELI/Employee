@@ -18,33 +18,6 @@ public class FirstController {
         this.personDAO = personDAO;
     }
 
-//    @GetMapping("/")
-//    public String getIndex(Model model) {
-//        try {
-//            model.addAttribute("perem", "Текст который вставляется в perem");
-//            System.out.println(model.getAttribute("lenght").toString());
-//        }catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return "index";
-//    }
-
-//    @GetMapping("/lol")
-//    public String testLol(Model model) {
-//        model.addAttribute("first", "Тут написано 'первый'");
-//        model.addAttribute("second", "Тут написано 'второй'");
-//        return "/testlol/lol";
-//    }
-//
-//    @GetMapping("/")
-//    public String getAll(Model model) {
-//        for (int i = 0; i < personDAO.getAll().size(); i ++) {
-//            System.out.println(personDAO.getAll().get(i) + "\n");
-//        }
-//        model.addAttribute("people", personDAO.getAll());
-//        return "/people/show";
-//    }
-
     @GetMapping()
     public String getAll(Model model) {
         model.addAttribute("people", personDAO.getAll());
@@ -61,7 +34,7 @@ public class FirstController {
     }
 
     @GetMapping("/new")
-    public String personeForm(@ModelAttribute("persone") Persone persone) {
+    public String addPersone(@ModelAttribute("persone") Persone persone) {
         return "/people/new";
     }
 
@@ -69,5 +42,12 @@ public class FirstController {
     public String personeSubmit(@ModelAttribute("persone") Persone persone) {
         personDAO.addPersone(persone);
         return "redirect:/first";
+    }
+
+    @DeleteMapping("/{id}")
+    public String personeDel(@PathVariable("id") int id) {
+        personDAO.deletePersone(id);
+        return "redirect:/first";
+
     }
 }

@@ -6,7 +6,11 @@
 </head>
     <body>
         <div th:each="persone :${people}">
-            <p th:text="'Пользователь с именем: ' + ${persone.getFirstName()} + ' и фамилией ' + ${persone.getLastName()}"></p>
+<!--            <form th:method="DELETE" th:action="@{/first/{id}(id=${persone.getID()})}">-->
+                <p th:text="'Пользователь с именем: ' + ${persone.getFirstName()} + ' и фамилией ' + ${persone.getLastName()} + ' ID = ' + ${persone.getID()}"></p>
+                <form th:method="DELETE" th:action="@{/first/{id}(id=${persone.getID()})}">
+                    <button type="submit">Удалить</button>
+                </form>
         </div>
     </body>
 </html>

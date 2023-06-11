@@ -6,15 +6,20 @@ public class Persone {
     private int age;
     private int ID;
 
+    private String departament;
+    private String email;
+
     public Persone() {
 
     }
 
-    public Persone(String firstName, String lastName, int age, int ID) {
+    public Persone(String firstName, String lastName, int age, int ID, String departament, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.ID = ID;
+        this.departament = departament;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -33,6 +38,14 @@ public class Persone {
         return ID;
     }
 
+    public String getDepartament() {
+        return departament;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -47,5 +60,13 @@ public class Persone {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public void setDepartament(String departament) {
+        this.departament = departament;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

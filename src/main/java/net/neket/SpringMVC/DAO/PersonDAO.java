@@ -29,21 +29,10 @@ public class PersonDAO {
     }
 
     public Persone getPersone(int id) {
-        for (int i = 0; i < listpersone.size(); i ++) {
-            if (i == (id - 1))
-                return listpersone.get(i);
-        }
-        return null;
+        return listpersone.stream().filter(p -> p.getID() == id).findAny().orElse(null);
     }
 
-    public int deletePersone(int id) {
-        for (int i = 0; i < listpersone.size(); i ++) {
-            if (i == (id - 1)) {
-                listpersone.remove(id - 1);
-                return 1;
-            }
-        }
-        return -1;
-
+    public void deletePersone(int id) {
+        listpersone.removeIf(p -> p.getID() == id);
     }
 }

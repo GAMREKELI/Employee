@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.util.UrlPathHelper;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
@@ -48,6 +50,12 @@ public class MyWebMvcConfig implements WebMvcConfigurer{
         thymeleafViewResolver.setTemplateEngine(templateEngine());
         registry.viewResolver(thymeleafViewResolver);
     }
+//    @Override
+//    public void configurePathMatch(PathMatchConfigurer configurer) {
+//        UrlPathHelper urlPathHelper = new UrlPathHelper();
+//        urlPathHelper.setRemoveSemicolonContent(false);
+//        configurer.setUrlPathHelper(urlPathHelper);
+//    }
 }
 
 

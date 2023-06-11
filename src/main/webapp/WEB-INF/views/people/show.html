@@ -5,12 +5,11 @@
   <title>Все пользователи</title>
 </head>
     <body>
-        <div th:each="persone :${people}">
-<!--            <form th:method="DELETE" th:action="@{/first/{id}(id=${persone.getID()})}">-->
-                <p th:text="'Пользователь с именем: ' + ${persone.getFirstName()} + ' и фамилией ' + ${persone.getLastName()} + ' ID = ' + ${persone.getID()}"></p>
-                <form th:method="DELETE" th:action="@{/first/{id}(id=${persone.getID()})}">
-                    <button type="submit">Удалить</button>
-                </form>
-        </div>
+    <div th:each="person : ${people}">
+        <p th:text="'Пользователь с именем: ' + ${person.getFirstName()} + ' и фамилией ' + ${person.getLastName()} + ' ID = ' + ${person.getID()}"></p>
+        <form th:action="@{/first/{id}(id=${person.getID()})}" th:method="DELETE">
+            <input type="submit" value="Удалить" />
+        </form>
+    </div>
     </body>
 </html>

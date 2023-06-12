@@ -67,22 +67,18 @@ public class PersonDAO {
 
     public void addPersone(Persone persone) {
         try {
-            Statement statement = connection.createStatement();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into Person values(6, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, persone.getFirstName());
+            preparedStatement.setString(2, persone.getLastName());
+            preparedStatement.setInt(3, persone.getAge());
+            preparedStatement.setString(4, persone.getDepartament());
+            preparedStatement.setString(5, persone.getEmail());
 
-            String SQL = "insert into Person values(" +
-                    5 + ", '" +
-                    persone.getFirstName() + "', '" +
-                    persone.getLastName() + "', " +
-                    persone.getAge() + ", '" +
-                    persone.getDepartament() + "', '" +
-                    persone.getEmail() + "')";
-            System.out.println(SQL);
-
-//            String SQL = "insert into Person values(" + 4 + ", '"persone.getFirstName()', 'Гамрекели', 11, 'School', 'gamrekeliGO@mail.ru')"
-            statement.executeUpdate(SQL);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
 //    public Persone getPersone(int id) {

@@ -33,16 +33,16 @@ public class FirstController {
 //        return "/people/index";
 //    }
 //
-//    @GetMapping("/new")
-//    public String addPersone(@ModelAttribute("persone") Persone persone) {
-//        return "/people/new";
-//    }
-//
-//    @PostMapping()
-//    public String personeSubmit(@ModelAttribute("persone") Persone persone) {
-//        personDAO.addPersone(persone);
-//        return "redirect:/first";
-//    }
+    @GetMapping("/new")
+    public String addPersone(@ModelAttribute("persone") Persone persone) {
+        return "/people/new";
+    }
+
+    @PostMapping()
+    public String personeSubmit(@ModelAttribute("persone") Persone persone) {
+        personDAO.addPersone(persone);
+        return "redirect:/first";
+    }
 //    @GetMapping("/{id}/update")
 //    public String edit(@PathVariable("id") int id, Model model) {
 //        model.addAttribute("person", personDAO.getPersone(id));

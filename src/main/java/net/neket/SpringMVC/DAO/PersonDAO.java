@@ -10,7 +10,6 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
-//    private List<Persone> listpersone;
     private static int ID;
 
 //    @Value("${spring.datasource.url}")
@@ -22,8 +21,9 @@ public class PersonDAO {
 //    @Value("${spring.datasource.password}")
     private static final String PASSWORD = "Q1234qwe";
 
-    private static final Connection connection;
-    static { // Драйвер для работы с базой данных
+    private static Connection connection;
+
+    static {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -39,10 +39,12 @@ public class PersonDAO {
 
     public List<Persone> getAll() {
         List<Persone> people = new ArrayList<>();
+
         try {
-            Statement statement = connection.createStatement(); // Объект 'запрос' к БД
-            String SQL = "SELECT * FROM person";
+            Statement statement = connection.createStatement();
+            String SQL = "SELECT * FROM Person";
             ResultSet resultSet = statement.executeQuery(SQL);
+
             while (resultSet.next()) {
                 Persone persone = new Persone();
 
@@ -55,6 +57,7 @@ public class PersonDAO {
 
                 people.add(persone);
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -63,8 +66,23 @@ public class PersonDAO {
     }
 
     public void addPersone(Persone persone) {
-//        persone.setID(++ID);
-//        listpersone.add(persone);
+        try {
+            Statement statement = connection.createStatement();
+
+            String SQL = "insert into Person values(" +
+                    5 + ", '" +
+                    persone.getFirstName() + "', '" +
+                    persone.getLastName() + "', " +
+                    persone.getAge() + ", '" +
+                    persone.getDepartament() + "', '" +
+                    persone.getEmail() + "')";
+            System.out.println(SQL);
+
+//            String SQL = "insert into Person values(" + 4 + ", '"persone.getFirstName()', 'Гамрекели', 11, 'School', 'gamrekeliGO@mail.ru')"
+            statement.executeUpdate(SQL);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 //    public Persone getPersone(int id) {

@@ -24,14 +24,14 @@ public class FirstController {
         return "/people/show";
     }
 
-//    @GetMapping("/{id}")
-//    public String getPersoneAsId(@PathVariable("id") int id, Model model) {
-//        Persone persone = personDAO.getPersone(id);
-//        if (persone == null)
-//            return "redirect:/first";
-//        model.addAttribute("id", persone);
-//        return "/people/index";
-//    }
+    @GetMapping("/{id}")
+    public String getPersoneAsId(@PathVariable("id") int id, Model model) {
+        Persone persone = personDAO.getPersone(id);
+        if (persone == null)
+            return "redirect:/first";
+        model.addAttribute("id", persone);
+        return "/people/index";
+    }
 //
     @GetMapping("/new")
     public String addPersone(@ModelAttribute("persone") Persone persone) {
@@ -43,22 +43,22 @@ public class FirstController {
         personDAO.addPersone(persone);
         return "redirect:/first";
     }
-//    @GetMapping("/{id}/update")
-//    public String edit(@PathVariable("id") int id, Model model) {
-//        model.addAttribute("person", personDAO.getPersone(id));
-//        return "/people/update";
-//    }
+    @GetMapping("/{id}/update")
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute("person", personDAO.getPersone(id));
+        return "/people/update";
+    }
 //
-//    @PatchMapping("/{id}")
-//    public String update(@PathVariable("id") int id, @ModelAttribute("person") Persone persone) {
-//        personDAO.update(persone, id);
-//        return "redirect:/first";
-//    }
+    @PatchMapping("/{id}")
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") Persone persone) {
+        personDAO.update(persone, id);
+        return "redirect:/first";
+    }
 //
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") int id) {
-//        personDAO.deletePersone(id);
-//        return "redirect:/first";
-//
-//    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        personDAO.deletePersone(id);
+        return "redirect:/first";
+
+    }
 }

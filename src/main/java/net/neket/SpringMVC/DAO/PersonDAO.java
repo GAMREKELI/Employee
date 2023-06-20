@@ -19,18 +19,17 @@ public class PersonDAO {
     }
 
     public List<Persone> getAll() {
-        List<Persone> people = new ArrayList<Persone>();
+//        List<Persone> people = new ArrayList<Persone>();
         return jdbcTemplate.query("SELECT * FROM Person", new PersonMapper());
     }
 
     public void addPersone(Persone persone) {
-        jdbcTemplate.update("INSERT INTO Person VALUES(?, ?, ?, ?, ?, ?)",
-                persone.getID(), persone.getFirstName(), persone.getLastName(), persone.getAge(), persone.getDepartament(), persone.getEmail());
+        jdbcTemplate.update("INSERT INTO Person(firstName, lastName, age, departament, email) VALUES(?, ?, ?, ?, ?)",
+                persone.getFirstName(), persone.getLastName(), persone.getAge(), persone.getDepartament(), persone.getEmail());
     }
 
     public Persone getPersone(int id) {
-        Persone persone = null;
-        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new PersonMapper())
+        return jdbcTemplate.query("SELECT * FROM Person WHERE id = ?", new Object[]{id}, new PersonMapper())
                 .stream().findAny().orElse(null);
     }
 

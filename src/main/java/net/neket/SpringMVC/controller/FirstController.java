@@ -25,21 +25,21 @@ public class FirstController {
     }
 
     @GetMapping("/{id}")
-    public String getPersoneAsId(@PathVariable("id") int id, Model model) {
+    public String getPersonAsId(@PathVariable("id") int id, Model model) {
         Persone persone = personDAO.getPersone(id);
         if (persone == null)
             return "redirect:/first";
         model.addAttribute("id", persone);
         return "/people/index";
     }
-//
+
     @GetMapping("/new")
-    public String addPersone(@ModelAttribute("persone") Persone persone) {
+    public String addPerson(@ModelAttribute("person") Persone persone) {
         return "/people/new";
     }
 
     @PostMapping()
-    public String personeSubmit(@ModelAttribute("persone") Persone persone) {
+    public String personSubmit(@ModelAttribute("person") Persone persone) {
         personDAO.addPersone(persone);
         return "redirect:/first";
     }
@@ -48,7 +48,7 @@ public class FirstController {
         model.addAttribute("person", personDAO.getPersone(id));
         return "/people/update";
     }
-//
+
     @PatchMapping("/{id}")
     public String update(@PathVariable("id") int id, @ModelAttribute("person") Persone persone) {
         personDAO.update(persone, id);

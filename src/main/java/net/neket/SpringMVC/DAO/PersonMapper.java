@@ -7,16 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonMapper implements RowMapper<Persone> {
+
     @Override
-    public Persone mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public Persone mapRow(ResultSet rs, int rowNum) throws SQLException {
         Persone persone = new Persone();
 
-        persone.setID(resultSet.getInt("id"));
-        persone.setFirstName(resultSet.getString("firstName"));
-        persone.setLastName(resultSet.getString("lastName"));
-        persone.setAge(resultSet.getInt("age"));
-        persone.setDepartament(resultSet.getString("departament"));
-        persone.setEmail(resultSet.getString("email"));
+        persone.setID(rs.getInt("id"));
+        persone.setFirstName(rs.getString("firstName"));
+        persone.setLastName(rs.getString("lastName"));
+        persone.setAge(rs.getInt("age"));
+        persone.setDepartament(rs.getString("departament"));
+        persone.setEmail(rs.getString("email"));
 
         return persone;
     }

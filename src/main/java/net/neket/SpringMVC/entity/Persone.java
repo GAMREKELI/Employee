@@ -1,12 +1,28 @@
 package net.neket.SpringMVC.entity;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class Persone {
+
+    @NotNull(message = "Вы не указали имя")
+    @Size(min = 2, max = 35, message = "Неккоректное имя")
     private String firstName;
+    @NotNull(message = "Вы не указали фамилию")
+    @Size(min = 2, max = 35, message = "Неккоректная фамилия")
     private String lastName;
+
+    @NotNull(message = "Вы не указали возраст")
+    @Min(value = 0, message = "Неверный возраст")
     private int age;
     private int ID;
 
+    @NotNull(message = "Вы не указали депортамент")
     private String departament;
+    @NotNull(message = "Вы не указали почту")
+    @Email(message = "Неверная почта")
     private String email;
 
     public Persone() {

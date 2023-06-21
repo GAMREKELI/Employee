@@ -1,10 +1,12 @@
 package net.neket.SpringMVC.controller;
 
+import jakarta.validation.Valid;
 import net.neket.SpringMVC.DAO.PersonDAO;
 import net.neket.SpringMVC.entity.Persone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -39,7 +41,10 @@ public class FirstController {
     }
 
     @PostMapping()
-    public String personSubmit(@ModelAttribute("person") Persone persone) {
+    public String personSubmit(@ModelAttribute("person") @Valid Persone persone,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "/people/new";
         personDAO.addPersone(persone);
         return "redirect:/first";
     }
@@ -50,7 +55,10 @@ public class FirstController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("person") Persone persone) {
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") @Valid Persone persone,
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "/people/update";
         personDAO.update(persone, id);
         return "redirect:/first";
     }

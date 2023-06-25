@@ -1,5 +1,0 @@
-net/neket/SpringMVC/entity/Persone.class
-net/neket/SpringMVC/DAO/PersonDAO.class
-net/neket/SpringMVC/initializer/WebAppInitializer.class
-net/neket/SpringMVC/config/MyWebMvcConfig.class
-net/neket/SpringMVC/controller/FirstController.class

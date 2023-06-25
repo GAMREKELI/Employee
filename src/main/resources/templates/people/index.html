@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ID пользователя</title>
+</head>
+<body>
+  <p th:text="'Имя: ' + ${id.getFirstName()}">FirstName</p>
+  <p th:text="'Фамилия: ' + ${id.getLastName()}">LastName</p>
+  <p th:text="'Возраст: ' + ${id.getAge()}">Age</p>
+  <p th:text="'Отдел: ' + ${id.getDepartament()}">Departament</p>
+  <p th:text="'Почта: ' + ${id.getEmail()}">Email</p>
+  <p th:text="'ID: ' + ${id.getID()}">ID</p>
+  <form th:method="GET" th:action="@{/Employee}">
+    <button type="submit">Назад</button>
+  </form>
+</body>
+</html>

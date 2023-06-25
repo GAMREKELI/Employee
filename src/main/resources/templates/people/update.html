@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление</title>
+</head>
+<body>
+  <form th:method="PATCH" th:action="@{/Employee/{id}(id = ${person.getID()})}" th:object="${person}">
+    <label for="firstName">Введите имя: </label>
+    <input type="text" th:field="*{firstName}" id="firstName">
+    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error</div>
+    <br/>
+    <label for="lastName">Введите фамилию: </label>
+    <input type="text" th:field="*{lastName}" id="lastName">
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName Error</div>
+    <br/>
+    <label for="age">Введите возраст: </label>
+    <input type="text" th:field="*{age}" id="age">
+    <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <br/>
+    <label for="departament">Введите департамент</label>
+    <input type="text" th:field="*{departament}" id="departament">
+    <div th:if="${#fields.hasErrors('departament')}" th:errors="*{departament}">Departament Error</div>
+    <br/>
+    <label for="email">Введите email</label>
+    <input type="text" th:field="*{email}" id="email">
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <br/>
+    <button type="submit">Обновить пользователя</button>
+  </form>
+</body>
+</html>

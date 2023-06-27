@@ -1,87 +1,50 @@
 package ru.pdursley.Employee.model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class Person {
-    @NotNull(message = "Вы не указали имя")
-    @Size(min = 2, max = 35, message = "Неккоректное имя")
-    private String firstName;
-    @NotNull(message = "Вы не указали фамилию")
-    @Size(min = 2, max = 35, message = "Неккоректная фамилия")
-    private String lastName;
-
-    @NotNull(message = "Вы не указали возраст")
-    @Min(value = 0, message = "Неверный возраст")
-    private int age;
     private int ID;
 
-    @NotNull(message = "Вы не указали депортамент")
-    private String departament;
-    @NotNull(message = "Вы не указали почту")
-    @Email(message = "Неверная почта")
-    private String email;
+    @NotNull
+    @Size(min = 1, max = 254, message = "Неверное имя пользователя!")
+    private String login;
+
+    @NotNull
+    @Size(min = 8, max = 254, message = "Неверный пароль!")
+    private String password;
 
     public Person() {
 
     }
 
-    public Person(String firstName, String lastName, int age, int ID, String departament, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    public Person(int ID, String login, String password) {
         this.ID = ID;
-        this.departament = departament;
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getAge() {
-        return age;
+        this.login = login;
+        this.password = password;
     }
 
     public int getID() {
         return ID;
     }
 
-    public String getDepartament() {
-        return departament;
+    public String getLogin() {
+        return login;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public String getPassword() {
+        return password;
     }
 
     public void setID(int ID) {
         this.ID = ID;
     }
 
-    public void setDepartament(String departament) {
-        this.departament = departament;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

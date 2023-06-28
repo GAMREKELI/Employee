@@ -103,8 +103,5 @@ public class PersonDAO {
 
         String personSQL = "UPDATE Person SET login = ?, password = ? WHERE id = ?";
         jdbcTemplate.update(personSQL, permission.getPerson().getLogin(), permission.getPerson().getPassword(), id);
-
-
-        
     }
 }

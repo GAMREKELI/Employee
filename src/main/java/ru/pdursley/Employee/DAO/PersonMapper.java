@@ -22,7 +22,7 @@ public class PersonMapper implements RowMapper<Permission> {
         personInfo.setFirstName(rs.getString("firstName"));
         personInfo.setLastName(rs.getString("lastName"));
         personInfo.setAge(rs.getInt("age"));
-        personInfo.setDepartament(rs.getString("departament"));
+        personInfo.setDepartment(rs.getString("department"));
         personInfo.setEmail(rs.getString("email"));
 
         Role role = new Role();

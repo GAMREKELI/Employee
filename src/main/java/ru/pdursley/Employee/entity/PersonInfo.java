@@ -22,20 +22,20 @@ public class PersonInfo {
     private int ID;
 
     @NotNull(message = "Вы не указали депортамент")
-    private String departament;
+    private String department;
     @NotNull(message = "Вы не указали почту")
     @Email(message = "Неверная почта")
     private String email;
 
     public PersonInfo() {}
 
-    public PersonInfo(Person person, String firstName, String lastName, int age, int ID, String departament, String email) {
+    public PersonInfo(Person person, String firstName, String lastName, int age, int ID, String department, String email) {
         this.person = person;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.ID = ID;
-        this.departament = departament;
+        this.department = department;
         this.email = email;
     }
 
@@ -59,8 +59,8 @@ public class PersonInfo {
         return person;
     }
 
-    public String getDepartament() {
-        return departament;
+    public String getDepartment() {
+        return department;
     }
 
     public String getEmail() {
@@ -83,8 +83,8 @@ public class PersonInfo {
         this.ID = ID;
     }
 
-    public void setDepartament(String departament) {
-        this.departament = departament;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public void setEmail(String email) {

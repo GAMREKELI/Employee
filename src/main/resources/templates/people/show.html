@@ -1,63 +1,63 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Все пользователи</title>-->
-<!--</head>-->
-<!--    <body>-->
-<!--    <div th:each="permission : ${people}">-->
-<!--        <a th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}"-->
-<!--           th:href="@{/Employee/{id}(id=${permission.getID()})}">USER</a>-->
-<!--        <form th:action="@{/Employee/{id}(id=${permission.getID()})}" th:method="DELETE">-->
-<!--            <button type="submit" >Удалить</button>-->
-<!--        </form>-->
-<!--        <form th:method="GET" th:action="@{/Employee/{id}/update(id=${permission.getID()})}">-->
-<!--            <button type="submit">Изменить</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <form th:method="GET" th:action="@{/Employee/new}">-->
-<!--            <br/>-->
-<!--            <button type="submit">Создать пользователя!</button>-->
-<!--        </form>-->
-<!--        <form th:action="@{/logout}" method="post">-->
-<!--            <button type="submit">Sign Out</button>-->
-<!--        </form>-->
-<!--    </div>-->
-
-<!--    </body>-->
-<!--</html>-->
-
-
-
-<!--TEST-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Все пользователи</title>
+  <meta charset="UTF-8">
+  <title>Все пользователи</title>
 </head>
     <body>
-        <div th:each="permission : ${people}">
-            <p th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}">testText</p>
-        <!--    <a th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}"-->
-        <!--       th:href="@{/Employee/{id}(id=${permission.getID()})}">USER</a>-->
-        <!--    <form th:action="@{/Employee/{id}(id=${permission.getID()})}" th:method="DELETE">-->
-        <!--        <button type="submit" >Удалить</button>-->
-        <!--    </form>-->
-        <!--    <form th:method="GET" th:action="@{/Employee/{id}/update(id=${permission.getID()})}">-->
-        <!--        <button type="submit">Изменить</button>-->
-        <!--    </form>-->
-        </div>
-        <!--<div>-->
-        <!--    <form th:method="GET" th:action="@{/Employee/new}">-->
-        <!--        <br/>-->
-        <!--        <button type="submit">Создать пользователя!</button>-->
-        <!--    </form>-->
-        <!--    <form th:action="@{/logout}" method="post">-->
-        <!--        <button type="submit">Sign Out</button>-->
-        <!--    </form>-->
-        <!--</div>-->
+    <div th:each="permission : ${people}">
+        <a th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}"
+           th:href="@{/Employee/{id}(id=${permission.getPersonInfo().getID()})}">USER</a>
+        <form th:action="@{/Employee/{id}(id=${permission.getPersonInfo().getID()})}" th:method="DELETE">
+            <button type="submit" >Удалить</button>
+        </form>
+        <form th:method="GET" th:action="@{/Employee/{id}/update(id=${permission.getPersonInfo().getID()})}">
+            <button type="submit">Изменить</button>
+        </form>
+    </div>
+    <div>
+        <form th:method="GET" th:action="@{/Employee/new}">
+            <br/>
+            <button type="submit">Создать пользователя!</button>
+        </form>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Sign Out</button>
+        </form>
+    </div>
 
     </body>
 </html>
+
+
+
+<!--&lt;!&ndash;TEST&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Все пользователи</title>-->
+<!--</head>-->
+<!--    <body>-->
+<!--        <div th:each="permission : ${people}">-->
+<!--            <p th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}">testText</p>-->
+<!--        &lt;!&ndash;    <a th:text="${permission.getPersonInfo().getFirstName()} + ', ' + ${permission.getPersonInfo().getLastName()}"&ndash;&gt;-->
+<!--        &lt;!&ndash;       th:href="@{/Employee/{id}(id=${permission.getID()})}">USER</a>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <form th:action="@{/Employee/{id}(id=${permission.getID()})}" th:method="DELETE">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <button type="submit" >Удалить</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </form>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <form th:method="GET" th:action="@{/Employee/{id}/update(id=${permission.getID()})}">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <button type="submit">Изменить</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </form>&ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash;<div>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <form th:method="GET" th:action="@{/Employee/new}">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <button type="submit">Создать пользователя!</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </form>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <form th:action="@{/logout}" method="post">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <button type="submit">Sign Out</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </form>&ndash;&gt;-->
+<!--        &lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--    </body>-->
+<!--</html>-->

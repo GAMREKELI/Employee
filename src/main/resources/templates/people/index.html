@@ -5,12 +5,15 @@
   <title>ID пользователя</title>
 </head>
 <body>
-  <p th:text="'Имя: ' + ${id.getFirstName()}">FirstName</p>
-  <p th:text="'Фамилия: ' + ${id.getLastName()}">LastName</p>
-  <p th:text="'Возраст: ' + ${id.getAge()}">Age</p>
-  <p th:text="'Отдел: ' + ${id.getDepartament()}">Departament</p>
-  <p th:text="'Почта: ' + ${id.getEmail()}">Email</p>
-  <p th:text="'ID: ' + ${id.getID()}">ID</p>
+  <p th:text="'Имя: ' + ${id.getPersonInfo().getFirstName()}">FirstName</p>
+  <p th:text="'Фамилия: ' + ${id.getPersonInfo().getLastName()}">LastName</p>
+  <p th:text="'Возраст: ' + ${id.getPersonInfo().getAge()}">Age</p>
+  <p th:text="'Отдел: ' + ${id.getPersonInfo().getDepartment()}">Department</p>
+  <p th:text="'Почта: ' + ${id.getPersonInfo().getEmail()}">Email</p>
+  <p th:text="'ID: ' + ${id.getPersonInfo().getID()}">ID</p>
+  <p th:text="'Login: ' + ${id.getPerson().getLogin()}">Login</p>
+  <p th:text="'Password: ' + ${id.getPerson().getPassword()}">Password</p>
+  <p th:text="'Role: ' + ${id.getRole().getRole()}">Role</p>
   <form th:method="GET" th:action="@{/Employee}">
     <button type="submit">Назад</button>
   </form>

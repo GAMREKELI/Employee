@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.pdursley.Employee.entity.Permission;
-import ru.pdursley.Employee.entity.PersonInfo;
-import ru.pdursley.Employee.model.Person;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
@@ -19,7 +17,7 @@ public class PersonDAO {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public PersonDAO(JdbcTemplate jdbcTemplate) {
+    public PersonDAO(JdbcTemplate jdbcTemplate, PasswordEncoder passwordEncoder) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -103,7 +101,5 @@ public class PersonDAO {
 
         String personSQL = "UPDATE Person SET login = ?, password = ? WHERE id = ?";
         jdbcTemplate.update(personSQL, permission.getPerson().getLogin(), permission.getPerson().getPassword(), id);
-
-
     }
 }

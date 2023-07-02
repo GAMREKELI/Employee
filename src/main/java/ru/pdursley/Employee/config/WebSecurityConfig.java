@@ -1,7 +1,5 @@
 package ru.pdursley.Employee.config;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,26 +8,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
     private final JdbcTemplate jdbcTemplate;
 
     public WebSecurityConfig(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -47,22 +43,13 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("u")
-//                        .password("p")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
@@ -75,9 +62,6 @@ public class WebSecurityConfig {
                 String login = rs.getString("login");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                System.out.println(login);
-                System.out.println(password);
-                System.out.println(role);
 
                 List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(role));
                 return new User(login, password, authorities);

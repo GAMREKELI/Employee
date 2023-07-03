@@ -94,6 +94,7 @@ public class PersonDAO {
                 permission.getPersonInfo().getAge(), permission.getPersonInfo().getDepartment(),
                 permission.getPersonInfo().getEmail(), id);
 
+
         String permissionSQL = "UPDATE Permission SET role_id = ? WHERE person_id = ?";
         String getRoleIdSQL = "SELECT id FROM Role WHERE role = ?";
         Integer roleId = jdbcTemplate.queryForObject(getRoleIdSQL, Integer.class, permission.getRole().getRole());
@@ -101,5 +102,6 @@ public class PersonDAO {
 
         String personSQL = "UPDATE Person SET login = ?, password = ? WHERE id = ?";
         jdbcTemplate.update(personSQL, permission.getPerson().getLogin(), permission.getPerson().getPassword(), id);
+
     }
 }

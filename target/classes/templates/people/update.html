@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <form th:method="PATCH" th:action="@{/Employee/{id}(id = ${permission.getPerson().getID()})}" th:object="${permission}">
+  <form th:method="PATCH" th:action="@{/Employee/{id}(id = ${id})}" th:object="${permission}">
     <label for="firstName">Введите имя: </label>
     <input type="text" th:field="*{personInfo.firstName}" id="firstName">
     <div th:if="${#fields.hasErrors('personInfo.firstName')}" th:errors="*{personInfo.firstName}">FirstName Error</div>
@@ -48,10 +48,13 @@
       <option value="ADMIN">ADMIN</option>
     </select>
     <br/>
+
     <button type="submit">Обновить пользователя</button>
   </form>
+
   <form th:method="GET" th:action="@{/Employee}">
     <button type="submit">Назад</button>
   </form>
+
 </body>
 </html>

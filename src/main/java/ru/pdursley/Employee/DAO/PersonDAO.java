@@ -15,9 +15,11 @@ import java.util.Objects;
 @Component
 public class PersonDAO {
     private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PersonDAO(JdbcTemplate jdbcTemplate, PasswordEncoder passwordEncoder) {
+    public PersonDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -32,12 +34,14 @@ public class PersonDAO {
 
     public void addPerson(Permission permission) {
 
+//        passwordEncoder.encode(permission.getPerson().getPassword());
+
         String personSQL = "INSERT INTO Person(login, password) VALUES(?, ?)";
         KeyHolder personKeyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(personSQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, permission.getPerson().getLogin());
-            ps.setString(2, permission.getPerson().getPassword());
+            ps.setString(2, passwordEncoder.encode(permission.getPerson().getPassword()));
             return ps;
         }, personKeyHolder);
 
@@ -101,7 +105,7 @@ public class PersonDAO {
         jdbcTemplate.update(permissionSQL, roleId, id);
 
         String personSQL = "UPDATE Person SET login = ?, password = ? WHERE id = ?";
-        jdbcTemplate.update(personSQL, permission.getPerson().getLogin(), permission.getPerson().getPassword(), id);
+        jdbcTemplate.update(personSQL, permission.getPerson().getLogin(), passwordEncoder.encode(permission.getPerson().getPassword()), id);
 
     }
 }

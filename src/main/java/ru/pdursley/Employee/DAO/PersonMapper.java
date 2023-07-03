@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PersonMapper implements RowMapper<Permission> {
+
     @Override
     public Permission mapRow(ResultSet rs, int rowNum) throws SQLException {
         Person person = new Person();

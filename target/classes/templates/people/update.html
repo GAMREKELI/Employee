@@ -38,7 +38,7 @@
     <br/>
 
     <label for="password">Введите пароль: </label>
-    <input type="text" th:field="*{person.password}" id="password">
+    <input type="password" th:field="*{person.password}" id="password">
     <div th:if="${#fields.hasErrors('person.password')}" th:errors="*{person.password}"></div>
     <br/>
 

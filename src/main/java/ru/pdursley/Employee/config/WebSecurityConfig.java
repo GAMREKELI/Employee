@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -43,11 +43,9 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -62,8 +60,8 @@ public class WebSecurityConfig {
                 String login = rs.getString("login");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-
                 List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(role));
+
                 return new User(login, password, authorities);
             });
         };

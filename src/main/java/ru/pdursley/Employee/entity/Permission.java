@@ -1,10 +1,13 @@
 package ru.pdursley.Employee.entity;
 
+import jakarta.validation.Valid;
 import ru.pdursley.Employee.model.Person;
 import ru.pdursley.Employee.model.Role;
 
 public class Permission {
+    @Valid
     private Person person;
+    @Valid
     private PersonInfo personInfo;
     private Role role;
     public Permission() {

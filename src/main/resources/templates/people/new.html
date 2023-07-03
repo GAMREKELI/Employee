@@ -9,36 +9,50 @@
   <form th:method="POST" th:action="@{/Employee}" th:object="${permission}">
     <label for="firstName">Введите имя: </label>
     <input type="text" th:field="*{personInfo.firstName}" id="firstName">
-<!--    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{getPersonInfo().firstName}">FirstName Error</div>-->
+    <div th:if="${#fields.hasErrors('personInfo.firstName')}" th:errors="*{personInfo.firstName}">FirstName Error</div>
     <br/>
+
     <label for="lastName">Введите фамилию: </label>
     <input type="text" th:field="*{personInfo.lastName}" id="lastName">
-<!--    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{getPersonInfo().lastName}">LastName Error</div>-->
+    <div th:if="${#fields.hasErrors('personInfo.lastName')}" th:errors="*{personInfo.lastName}">LastName Error</div>
     <br/>
+
     <label for="age">Введите возраст: </label>
     <input type="text" th:field="*{personInfo.age}" id="age">
-<!--    <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>-->
+    <div th:if="${#fields.hasErrors('personInfo.age')}" th:errors="*{personInfo.age}">Age Error</div>
     <br/>
+
     <label for="department">Введите департамент: </label>
     <input type="text" th:field="*{personInfo.department}" id="department">
-<!--    <div th:if="${#fields.hasErrors('departament')}" th:errors="*{departament}">Departament Error</div>-->
+    <div th:if="${#fields.hasErrors('personInfo.department')}" th:errors="*{personInfo.department}">Department Error</div>
     <br/>
+
     <label for="email">Введите email: </label>
     <input type="text" th:field="*{personInfo.email}" id="email">
-<!--    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>-->
+    <div th:if="${#fields.hasErrors('personInfo.email')}" th:errors="*{personInfo.email}">Email Error</div>
     <br/>
 
     <label for="login">Введите логин: </label>
     <input type="text" th:field="*{person.login}" id="login">
+    <div th:if="${#fields.hasErrors('person.login')}" th:errors="*{person.login}"></div>
     <br/>
 
     <label for="password">Введите пароль: </label>
     <input type="text" th:field="*{person.password}" id="password">
+    <div th:if="${#fields.hasErrors('person.password')}" th:errors="*{person.password}"></div>
     <br/>
 
-    <label for="role">Введите роль: </label>
-    <input type="text" th:field="*{role.role}" id="role">
+    <label for="role">Выберите роль: </label>
+    <select th:field="*{role.role}" id="role">
+      <option value="USER">USER</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+    <br/>
     <button type="submit">Создать!</button>
+  </form>
+
+  <form th:method="GET" th:action="@{/Employee}">
+    <button type="submit">Назад</button>
   </form>
 
 </body>

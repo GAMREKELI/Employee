@@ -27,7 +27,3 @@ CREATE TABLE Permission (
     FOREIGN KEY (role_id) REFERENCES Role(id),
     PRIMARY KEY (person_id, role_id)
 );
-
-SELECT p.*, pi.*, r.role FROM Person p JOIN PersonInfo pi ON p.id = pi.person_id JOIN Role r ON p.role_id = r.id;
-
-SELECT p.*, pi.*, r.role FROM Person p JOIN PersonInfo pi ON p.id = pi.id JOIN Permission pm ON p.id = pm.person_id JOIN Role r ON pm.role_id = r.id

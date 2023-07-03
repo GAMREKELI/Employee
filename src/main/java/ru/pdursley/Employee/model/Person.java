@@ -7,11 +7,11 @@ public class Person {
     private int ID;
 
     @NotNull
-    @Size(min = 1, max = 254, message = "Неверное имя пользователя!")
+    @Size(min = 4, max = 254, message = "Неверное имя пользователя!")
     private String login;
 
     @NotNull
-    @Size(min = 8, max = 254, message = "Неверный пароль!")
+    @Size(min = 6, max = 254, message = "Неверный пароль!")
     private String password;
 
     public Person() {

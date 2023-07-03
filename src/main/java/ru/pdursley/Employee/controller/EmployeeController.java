@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.pdursley.Employee.DAO.PersonDAO;
 import ru.pdursley.Employee.entity.Permission;
+import ru.pdursley.Employee.entity.PersonInfo;
 import ru.pdursley.Employee.model.Person;
 
 @Controller
@@ -41,9 +43,10 @@ public class EmployeeController {
     }
 //
     @PostMapping()
-    public String personSubmit(@ModelAttribute("permission") Permission permission) {
-//        if (bindingResult.hasErrors())
-//            return "/people/new";
+    public String personSubmit(@ModelAttribute("permission") @Valid Permission permission,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "/people/new";
         personDAO.addPerson(permission);
         return "redirect:/Employee";
     }
@@ -54,9 +57,10 @@ public class EmployeeController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("permission") Permission permission) {
-//        if (bindingResult.hasErrors())
-//            return "/people/update";
+    public String update(@PathVariable("id") int id, @ModelAttribute("permission") @Valid Permission permission,
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "/people/update";
         personDAO.update(permission, id);
         return "redirect:/Employee";
     }

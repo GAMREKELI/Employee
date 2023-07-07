@@ -62,6 +62,13 @@ public class WebSecurityConfig {
                 String role = rs.getString("role");
                 List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(role));
 
+                boolean isPasswordEncrypted = password.startsWith("$2a$");
+                if (!isPasswordEncrypted) {
+                    password = passwordEncoder().encode(password);
+                    String updateSQL = "UPDATE Person SET password = ? WHERE login = ?";
+                    jdbcTemplate.update(updateSQL, password, login);
+                }
+
                 return new User(login, password, authorities);
             });
         };
